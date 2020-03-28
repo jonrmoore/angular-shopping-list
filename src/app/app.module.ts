@@ -6,6 +6,9 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingListAdd } from "./shopping-list/add/add.component";
 import { ShoppingListEdit } from "./shopping-list/edit/edit.component";
 import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
+import { RecipeList } from "./recipe-book/list/list.componnent";
+import { RecipeItem } from "./recipe-book/item/item.component";
+import { RecipeDetail } from "./recipe-book/detail/detail.component";
 import { HeaderComponent } from "./header/header.component";
 
 @NgModule({
@@ -14,6 +17,9 @@ import { HeaderComponent } from "./header/header.component";
     ShoppingListComponent,
     ShoppingListAdd,
     ShoppingListEdit,
+    RecipeList,
+    RecipeItem,
+    RecipeDetail,
     RecipeBookComponent,
     HeaderComponent
   ],

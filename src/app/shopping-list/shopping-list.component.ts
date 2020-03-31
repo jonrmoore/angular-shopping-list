@@ -15,4 +15,18 @@ export class ShoppingListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onNewIngredientAdded(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
+
+  onIngredientDeleted() {
+    if (this.ingredients.length > 0) {
+      this.ingredients.pop();
+    }
+  }
+
+  onIngredientsCleared() {
+    this.ingredients = [];
+  }
 }

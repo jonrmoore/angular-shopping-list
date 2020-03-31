@@ -1,15 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Ingredient } from "./../../shared/ingredient.model";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  EventEmitter,
+  Output,
+  ElementRef
+} from "@angular/core";
 
 @Component({
-  selector: 'app-shopping-edit',
-  templateUrl: './shopping-edit.component.html',
-  styleUrls: ['./shopping-edit.component.scss']
+  selector: "app-shopping-edit",
+  templateUrl: "./shopping-edit.component.html",
+  styleUrls: ["./shopping-edit.component.scss"]
 })
-export class ShoppingEditComponent implements OnInit {
+export class ShoppingEditComponent {
+  @Output() newIngredientAdded = new EventEmitter<Ingredient>();
+  @Output() ingredientDeleted = new EventEmitter<void>();
+  @Output() ingredientsCleared = new EventEmitter<void>();
 
-  constructor() { }
+  @ViewChild("nameInput", { static: false }) nameInput: ElementRef;
+  @ViewChild("amountInput", { static: false }) amountInput: ElementRef;
 
-  ngOnInit() {
+  onAdd() {
+    // event.preventDefault();
+    this.newIngredientAdded.emit({
+      name: this.nameInput.nativeElement.value,
+      amount: this.amountInput.nativeElement.value
+    });
   }
 
+  onDelete() {
+    this.ingredientDeleted.emit();
+  }
+
+  onClear() {
+    this.ingredientsCleared.emit();
+  }
 }

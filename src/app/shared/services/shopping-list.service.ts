@@ -1,6 +1,7 @@
-import { EventEmitter } from "@angular/core";
-import { Ingredient } from "../ingredient.model";
+import { Ingredient } from "./../ingredient.model";
+import { EventEmitter, Injectable } from "@angular/core";
 
+@Injectable({ providedIn: "root" })
 export class ShoppingListService {
   ingredientsChanged = new EventEmitter<Ingredient[]>();
   ingredients: Ingredient[] = [
@@ -17,7 +18,13 @@ export class ShoppingListService {
   }
 
   addIngredient(ingredient: Ingredient) {
+    console.log("add called");
     this.ingredients.push(ingredient);
+    this.emitChange();
+  }
+
+  addIngredients(ingredients: Ingredient[]) {
+    this.ingredients.push(...ingredients);
     this.emitChange();
   }
 

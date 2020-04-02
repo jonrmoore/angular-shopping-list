@@ -2,7 +2,7 @@
   <div class="col-xs-10">
     <app-shopping-edit
       (newIngredientAdded)="onNewIngredientAdded($event)"
-      (ingredientDeleted)="onIngredientDeleted()"
+      (ingredientDeleted)="onIngredientDeleted($event)"
       (ingredientsCleared)="onIngredientsCleared()"
     ></app-shopping-edit>
     <hr />

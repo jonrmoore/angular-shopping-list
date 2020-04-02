@@ -22,7 +22,6 @@ export class ShoppingEditComponent {
   @ViewChild("amountInput", { static: false }) amountInput: ElementRef;
 
   onAdd() {
-    // event.preventDefault();
     this.newIngredientAdded.emit({
       name: this.nameInput.nativeElement.value,
       amount: this.amountInput.nativeElement.value

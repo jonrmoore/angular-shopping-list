@@ -1,3 +1,4 @@
+import { RecipeService } from "./../../../shared/services/recipe.service";
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 import { Recipe } from "../../recipe.model";
 
@@ -11,8 +12,11 @@ export class RecipeItemComponent {
 
   @Output() recipeSelected = new EventEmitter<void>();
 
+  constructor(private recipeService: RecipeService) {}
+
   onSelect() {
     console.log("\nonSelect called -> recipe", this.recipe);
-    this.recipeSelected.emit();
+    // this.recipeSelected.emit();
+    this.recipeService.recipeSelected.emit(this.recipe);
   }
 }

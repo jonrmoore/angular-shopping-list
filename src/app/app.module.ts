@@ -1,3 +1,6 @@
+import { RecipeService } from "./shared/services/recipe.service";
+import { RecipeDetailsResolver } from "./recipes/recipe-details/recipe-details-resolver.service";
+import { AppRoutingModule } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -10,6 +13,8 @@ import { RecipeItemComponent } from "./recipes/recipe-list/recipe-item/recipe-it
 import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component";
 import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { DropdownDirective } from "./shared/dropdown.directive";
+import { ErrorPageComponent } from "./error-page/error-page.component";
+import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +26,12 @@ import { DropdownDirective } from "./shared/dropdown.directive";
     RecipeDetailsComponent,
     RecipeItemComponent,
     RecipeListComponent,
-    DropdownDirective
+    DropdownDirective,
+    ErrorPageComponent,
+    NoRecipeSelectedComponent,
   ],
-  imports: [BrowserModule],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [RecipeService, RecipeDetailsResolver],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

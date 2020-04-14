@@ -18,7 +18,6 @@ export class ShoppingListService {
   }
 
   addIngredient(ingredient: Ingredient) {
-    console.log("add called");
     this.ingredients.push(ingredient);
     this.emitChange();
   }

@@ -1,3 +1,4 @@
+import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { NoRecipeSelectedComponent } from "./recipes/no-recipe-selected/no-recipe-selected.component";
 import { RecipeDetailsResolver } from "./recipes/recipe-details/recipe-details-resolver.service";
 import { RecipeDetailsComponent } from "./recipes/recipe-details/recipe-details.component";
@@ -13,11 +14,13 @@ const appRoutes: Routes = [
     component: RecipesComponent,
     children: [
       { path: "", component: NoRecipeSelectedComponent },
+      { path: "new", component: RecipeEditComponent },
       {
         path: ":id",
         component: RecipeDetailsComponent,
         resolve: { recipeDetail: RecipeDetailsResolver },
       },
+      { path: ":id/edit", component: RecipeEditComponent },
     ],
   },
   { path: "shopping-list", component: ShoppingListComponent },

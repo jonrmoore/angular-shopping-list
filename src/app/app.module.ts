@@ -14,7 +14,8 @@ import { RecipeListComponent } from "./recipes/recipe-list/recipe-list.component
 import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-edit.component";
 import { DropdownDirective } from "./shared/dropdown.directive";
 import { ErrorPageComponent } from "./error-page/error-page.component";
-import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recipe-selected.component';
+import { NoRecipeSelectedComponent } from "./recipes/no-recipe-selected/no-recipe-selected.component";
+import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NoRecipeSelectedComponent } from './recipes/no-recipe-selected/no-recip
     DropdownDirective,
     ErrorPageComponent,
     NoRecipeSelectedComponent,
+    RecipeEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [RecipeService, RecipeDetailsResolver],

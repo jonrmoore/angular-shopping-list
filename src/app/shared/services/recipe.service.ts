@@ -57,4 +57,8 @@ export class RecipeService {
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
   }
+
+  deleteRecipe(id: number) {
+    this.recipes = this.recipes.filter((r) => r.id !== id);
+  }
 }

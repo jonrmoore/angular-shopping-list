@@ -1,25 +1,69 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form [formGroup]="editRecipeForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" #nameInput />
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            #nameInput
+            formControlName="name"
+          />
+          <span
+            class="help-block"
+            *ngIf="
+              !editRecipeForm.get('name').valid &&
+              editRecipeForm.get('name').touched
+            "
+            >Name must be at least 3 characters long!</span
+          >
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input type="number" id="amount" class="form-control" #amountInput />
+          <input
+            type="number"
+            id="amount"
+            class="form-control"
+            #amountInput
+            formControlName="amount"
+          />
+          <span
+            class="help-block"
+            *ngIf="
+              !editRecipeForm.get('amount').valid &&
+              editRecipeForm.get('amount').touched
+            "
+          >
+            Please enter a valid amount (max 100)
+          </span>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="button" (click)="onAdd()">
+          <button
+            class="btn btn-success"
+            type="button"
+            (click)="onAdd()"
+            [disabled]="!editRecipeForm.valid"
+          >
             Add
           </button>
-          <button class="btn btn-danger" type="button" (click)="onDelete()">
+          <button
+            class="btn btn-danger"
+            type="button"
+            (click)="onDelete()"
+            [disabled]="!editRecipeForm.valid"
+          >
             Delete
           </button>
-          <button class="btn btn-primary" type="button" (click)="onClear()">
+          <button
+            class="btn btn-primary"
+            type="button"
+            (click)="onClear()"
+            [disabled]="!editRecipeForm.valid"
+          >
             Clear
           </button>
         </div>

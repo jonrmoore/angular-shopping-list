@@ -1,10 +1,13 @@
-import { Ingredient } from "./../ingredient.model";
-import { EventEmitter, Injectable } from "@angular/core";
+import { FormControl, FormGroup } from "@angular/forms";
+import { Ingredient } from "../models/ingredient.model";
+import { Injectable } from "@angular/core";
 import { Subject } from "rxjs";
+import { Form } from "@angular/forms";
 
 @Injectable({ providedIn: "root" })
 export class ShoppingListService {
   ingredientsChanged = new Subject<Ingredient[]>();
+  startedEditing = new Subject<number>();
   ingredients: Ingredient[] = [
     new Ingredient("Zucchini", 5),
     new Ingredient("Peaches", 10),
@@ -18,8 +21,15 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
-  addIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
+  getIngredient(index: number) {
+    return this.ingredients[index];
+  }
+
+  addIngredient(form: FormGroup) {
+    const {
+      value: { name, amount },
+    } = form;
+    this.ingredients.push(new Ingredient(name, amount));
     this.emitChange();
   }
 
@@ -28,13 +38,13 @@ export class ShoppingListService {
     this.emitChange();
   }
 
-  deleteIngredient() {
-    this.ingredients.pop();
+  updateIngredient(index: number, newIngredient: Ingredient) {
+    this.ingredients[index] = newIngredient;
     this.emitChange();
   }
 
-  clearIngredients() {
-    this.ingredients = [];
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
     this.emitChange();
   }
 }

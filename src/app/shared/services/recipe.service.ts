@@ -1,7 +1,7 @@
 import { ShoppingListService } from "./shopping-list.service";
 import { Injectable } from "@angular/core";
 import { Recipe } from "./../../recipes/recipe.model";
-import { Ingredient } from "../ingredient.model";
+import { Ingredient } from "../models/ingredient.model";
 import { Subject } from "rxjs";
 
 @Injectable()

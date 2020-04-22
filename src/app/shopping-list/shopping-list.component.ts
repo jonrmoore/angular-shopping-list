@@ -1,6 +1,6 @@
 import { ShoppingListService } from "./../shared/services/shopping-list.service";
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Ingredient } from "../shared/ingredient.model";
+import { Ingredient } from "../shared/models/ingredient.model";
 import { Subscription } from "rxjs";
 
 @Component({
@@ -23,18 +23,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     );
   }
 
-  onNewIngredientAdded(ingredient: Ingredient) {
-    this.slService.addIngredient(ingredient);
-  }
-
-  onIngredientDeleted() {
-    if (this.ingredients.length > 0) {
-      this.slService.deleteIngredient();
-    }
-  }
-
-  onIngredientsCleared() {
-    this.slService.clearIngredients();
+  onEditItem(index: number) {
+    this.slService.startedEditing.next(index);
   }
 
   ngOnDestroy(): void {

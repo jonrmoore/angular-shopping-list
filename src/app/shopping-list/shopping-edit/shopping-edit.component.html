@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
-    <form [formGroup]="editRecipeForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="editRecipeForm" (ngSubmit)="onAdd()">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
@@ -48,22 +48,17 @@
             (click)="onAdd()"
             [disabled]="!editRecipeForm.valid"
           >
-            Add
+            {{ editMode ? "Update" : "Add" }}
           </button>
           <button
             class="btn btn-danger"
             type="button"
             (click)="onDelete()"
-            [disabled]="!editRecipeForm.valid"
+            *ngIf="editMode"
           >
             Delete
           </button>
-          <button
-            class="btn btn-primary"
-            type="button"
-            (click)="onClear()"
-            [disabled]="!editRecipeForm.valid"
-          >
+          <button class="btn btn-primary" type="button" (click)="onClear()">
             Clear
           </button>
         </div>
